@@ -79,7 +79,7 @@ end
 ###Step 5
 Create a file called **"index.html.erb"** under 
 ```
-app > assets > views > static_pages
+app > views > static_pages
 ```
 
 Note where we are putting this file because this is very important.
@@ -104,6 +104,8 @@ Well... you will find the answer below.
 
 <a name="advancedMVC"></a>
 #The Advance MVC Framework With Database
+
+(step 8 is not necessarily with JSON only)
 
 ![The flowchart](https://raw.githubusercontent.com/dshcheung/wdi7/master/images/MVC%20Simple%20Explained.jpg)
 
@@ -205,7 +207,7 @@ Given the simple association decloration, rails will **automatically** add a col
 
 Now whenever you are refering to ```Post.first.user``` or ```User.first.posts```, rails will automatically give you all the records.
 
-If you still like non-relational database for these kinds of operations... You seriouslly have something wrong with you.
+If you still like non-relational database for these kinds of operations... You seriouslly have something wrong with you. (Not necessarily. I think MongoDB is doing a great job at it. Also, if you put the data correctly, it would be fine. For example, if you want to search user by username, you just need to put username as the key.)
 
 <a name="simpleModel"></a>
 ##Simple Model Creation
@@ -304,7 +306,7 @@ Post.find(1).comments.create(:content => "You are the crazy one")
 Post.find(1).comments.create(:content => "Both of you are crazy")
 ```
 
-If you have noticed, we didn't need to specify **user_id**. This is because rails knows the association and did it for us.
+If you have noticed, we didn't need to specify **post_id**. This is because rails knows the association and did it for us.
 
 ###Step 4
 We can now play with it a little. Try these and pay attention to the results
@@ -331,7 +333,7 @@ The following is a list of association which you will all use in the future.
  - Polymorphic
  - Self
 
-The common ones we would be using is ```belongs_to``` and ```has_many```
+The common ones we would be using are ```belongs_to``` and ```has_many```
 
 <a name="migrationTypes"></a>
 ##Types of Data Types for Migration
@@ -463,7 +465,7 @@ As always, we start off with routes. However by using ```resources :post``` it h
 ###Step 3
 Now we need the controller to process the data we sent it and create a database entry with it.
 
-When the controller recieves the data, it will automatically put it in the **params** variable
+When the controller receives the data, it will automatically put it in the **params** variable
 
 Given you sent these data in AJAX
 ```
