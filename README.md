@@ -134,7 +134,7 @@ How it works:
 Before making a model and database, there are something you must understand.
 
 Imagine you are trying to create Reddit and you have stored everything in a big hash
-``` javascript
+``` js
 var myReddit = {
   users: [
     {
@@ -167,7 +167,7 @@ Now imagine you want to find the author's email of the first post.
 Wait what? That's so simple Denis, its not even a challenge! 
 
 All you have to do is find the author of the first post then search for users with the same username and get his email.
-```
+``` js
 var postAuthor = myReddit.posts[0].author;
 var users = myReddit.users;
 var findEmail = function () {
@@ -187,7 +187,7 @@ While non-relational DB is quick if you know where the data is it is messy if yo
 
 ###Relational Database
 Using the previous example, what if you can simply type
-```
+``` ruby
 Posts.first.user.username
 ```
 
@@ -344,37 +344,37 @@ The common ones we would be using is ```belongs_to``` and ```has_many```
 <a name="databaseMethods"></a>
 ##Methods for Using the Database
 The following is a list of common methods for using the database for your reference.
-```
-all
+``` ruby
+#all
   User.all
-first/last
+#first/last
   User.first
-count
+#count
   User.count
-order
+#order
   User.order(created_at: :asc)
-limit
+#limit
   User.order(created_at: :asc).limit(10)
-offset
+#offset
   page = params['page'] * 10
   User.order(created_at: :asc).limit(10).offset(page)
-find(n)
+#find(n)
   User.find(1)
-find_by
+#find_by
   User.find_by(first_name: ‘denis’, last_name: ‘cheung’)
-where
+#where
   User.where(age: 40)[0][:email]
-distinct/uniq
+#distinct/uniq
   User.distinct
-pluck
+#pluck
   User.pluck(:religion).uniq
-group
+#group
   User.group(:religion).count
-include(eager loading)
+#include(eager loading)
   Post.find(1).user
   User.includes(:posts).where('posts.name = ?', 'WDI').references(:posts)
   User.includes(:posts).where(:posts => {name: 'WDI'})
-joins(lazy loading)
+#joins(lazy loading)
   User.joins(:posts).where('posts.name = ?', 'WDI').references(:posts)
   User.joins(:posts).where(:posts => {name: 'WDI'})
 ```
@@ -415,7 +415,7 @@ What does the method syntax looks like?
 
 ###Step 4
 Inside the index method, add
-```
+``` ruby
 @posts = Post.all
 ```
 
@@ -426,7 +426,7 @@ Where should this file be placed?
 
 ###Step 6
 Edit the **index.html.erb** we created for posts.
-```
+``` html
 <h1>List of all Comments</h1>
 
 <% @posts.each do |post| %>
@@ -466,7 +466,7 @@ Now we need the controller to process the data we sent it and create a database 
 When the controller recieves the data, it will automatically put it in the **params** variable
 
 Given you sent these data in AJAX
-```
+``` js
 var data = {
   title: "My Title",
   content: "My Content"
@@ -474,7 +474,7 @@ var data = {
 ```
 
 Will give you
-```
+``` ruby
 params["title"] #returns "My Title"
 params["content"] #returns "My Content"
 ```
@@ -482,7 +482,7 @@ params["content"] #returns "My Content"
 **Challenge**
  - Given the format below, fill in xxxxx
 
-```
+``` ruby
 post = Post.new(:title => xxxxx, :content => xxxxx)
 if post.xxxx
   redirect_to posts_path
