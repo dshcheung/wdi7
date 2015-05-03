@@ -6,8 +6,12 @@
   - [Non-Relational Databases](https://github.com/dshcheung/wdi7/blob/master/relation_vs_non_relational.md#non-relational)
   - [Relational Databases](https://github.com/dshcheung/wdi7/blob/master/relation_vs_non_relational.md#relational)
   - [Conclusion](https://github.com/dshcheung/wdi7/blob/master/relation_vs_non_relational.md#conclusion)
- * [Advanced MVC Framework with Database](https://github.com/dshcheung/wdi7/blob/master/advanced_mvc_framework.md)
+ * [Advance MVC Framework with Database](https://github.com/dshcheung/wdi7/blob/master/advance_mvc_framework.md)
   - [Simple Model Creation](#simpleModel)
+
+
+
+  
   - [Using Databases](#usingDatabases)
   - [Data Types for Migration](#migrationTypes)
   - [Types of Associations for Models](#modelAssociations)
