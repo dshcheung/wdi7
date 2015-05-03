@@ -170,7 +170,7 @@ The things we did are very basic but very powerful. We will now proceed to using
 
 <a name="linkingAll"></a>
 ##Linking It All Together
-Lets try to get data in controller show it in view.
+Lets try to get data in controller and show it in view.
 
 ###Step 1
 Everything starts with the route, we will now create an index page for posts.
@@ -195,9 +195,15 @@ This will give you is
 ```
 Does these look confusing? For now, lets ignore the Prefix column and focus on the rest. Previously when we did ```root "static_pages#index"```, we basically tell the route to redirectect any "http://localhost:3000/" to the **static_pages controller index action**. Now given the type of http request (get, post, put, delete), it will redirect us to the appropirate controller and action.
 
+Another way, if you prefer, is typing all these out one by one like this
+``` ruby
+get '/posts', to: 'posts#index'
+post '/posts', to: 'posts#create'
+#and so on
+````
+
 ###Step 2
-In iTerm, create controller for **posts**
-```rails g controller Posts```
+In iTerm, create controller for **posts** ```rails g controller Posts```
 
 ###Step 3
 In the controller we just created, add the **index action**
@@ -213,16 +219,16 @@ Inside the **index action**, add
 @posts = Post.all
 ```
 
-In here we are trying to create a **Global** variable that can be access by the view. Remember, any variable with "@" infront of it can be access by the view. Also we are asking the action to retrieve **all the Post data**.
+Here we are trying to create a **Global** variable that can be access by the view. Remember, any variable with "@" infront of it can be access by the view. Also we are asking the action to retrieve **all the Post data**.
 
 ###Step 5
 Create a file **index.html.erb** for **posts controller** in ```app > views > posts```
 
-Remember, every action that was redirected from a **HTTP Get** should have a **action.html.erb**
+Remember, almost every action should have a **action.html.erb**
 
 ###Step 6
 Edit the **index.html.erb** we created for **posts controller**
-``` html
+``` HTML
 <h1>List of all Comments</h1>
 
 <% @posts.each do |post| %>
@@ -235,7 +241,9 @@ Edit the **index.html.erb** we created for **posts controller**
 <% end %>
 ```
 
-We will explain the ruby html code later, so for now just copy and paste it.
+Here you can see something very similar to what we did in Basic of Ruby. the difference is the "<% %>" and "<%= %>".
+
+Basically the code with the = sign will try to print out the variable specified while the code without the = sign will simply run the logic
 
 ###Step 7
 Start the server if you havn't already, then go to ```localhost:3000/posts```

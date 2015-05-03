@@ -14,13 +14,7 @@
   - [Data Types for Migration](https://github.com/dshcheung/wdi7/blob/master/additional_information.md#migrationTypes)
   - [Types of Associations for Models](https://github.com/dshcheung/wdi7/blob/master/additional_information.md#modelAssociations)
   - [Methods for Using the Database](https://github.com/dshcheung/wdi7/blob/master/additional_information.md#databaseMethods)
-
-
-
-
-
-
-  
-  - [Using AJAX with ROR](#ajaxROR)
-  - [Installing Devise](#devise)
-  - [Model Validations](#validations)
+ * [The Next Step](https://github.com/dshcheung/wdi7/blob/master/next_step.md)
+  - [Using AJAX with ROR](https://github.com/dshcheung/wdi7/blob/master/next_step.md#ajaxROR)
+  - [Installing Devise](https://github.com/dshcheung/wdi7/blob/master/next_step.md#devise)
+  - [Model Validations](https://github.com/dshcheung/wdi7/blob/master/next_step.md#validations)
