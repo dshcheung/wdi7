@@ -168,8 +168,8 @@ Comment.all
 
 The things we did are very basic but very powerful. We will now proceed to using these skills in an actual **controller** to show information in the **view*
 
-<a name="linkingAll"></a>
-##Linking It All Together
+<a name="linkingAllIndex"></a>
+##Linking It All Together - Index
 Lets try to get data in controller and show it in view.
 
 ###Step 1
@@ -247,3 +247,92 @@ Here you can see something very similar to what we did in Basic of Ruby. Basical
 Start the server if you havn't already, then go to ```localhost:3000/posts```
 
 Bravo! You have just used the whole MVC model!!!!
+
+<a name="linkingAllShow"></a>
+##Linking It All Together - Show
+
+<a name="linkingAllNewCreate"></a>
+##Linking It All Together - New&Create
+Just now we have completed the index action, but there are a lot more we need to do. We will do the new&create.
+
+###Step 1
+Since we already used ```resources :posts``` we don't need to add stuff to the route file. However if you are interested here is the code
+``` ruby
+get '/posts/new', to: 'posts#new'
+post '/posts', to: 'posts#create'
+```
+
+In rails, **new action** will should give you a template form to create a new post. Then the form will be submitted to **create action**
+
+###Step 2
+In the posts controller, add emtpy **new action**
+
+In **new action** add ```@post = Post.new()```
+
+Recall the difference between .new() and .create()? Basically what we want is to **save a template of an entry to @post and use it to create a form in view```
+
+###Step 3
+Create a view file call **new.html.erb** into the ```app > views > posts``` folder.
+
+In the **new.html.erb** add
+``` HTML
+<%= form_for @person do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+
+  <%= f.label :content %>:
+  <%= f.text_field :content %><br />
+
+  <%= f.submit %>
+<% end %>
+
+<!-- basically, the code above would get rendered and become the code below -->
+
+<form action="/posts" class="new_post" id="new_post" method="post">
+  <input name="authenticity_token" type="hidden" value="NrOp5bsjoLRuK8IW5+dQEYjKGUJDe7TQoZVvq95Wteg=" />
+  <label for="post_title">Title</label>:
+  <input id="post_title" name="post[title]" type="text" /><br />
+
+  <label for="post_content">Content</label>:
+  <input id="post_content" name="post[content]" type="text" /><br />
+
+  <input name="commit" type="submit" value="Create Post" />
+</form>
+```
+
+###Step 4
+Now that we have the **new action** covered, we need the **create action**. 
+In the posts controller, add empty **create action**
+
+In **create action** add
+``` Ruby
+  post = Post.new(params[:post])
+  if post.save
+    #if saved
+    redirect_to posts
+  else
+    #if failed
+    redirect_to posts
+  end
+```
+
+Recall this?
+``` ruby
+#    Prefix Verb   URI Pattern               Controller#Action
+#     posts GET    /posts(.:format)          posts#index
+#           POST   /posts(.:format)          posts#create
+#  new_post GET    /posts/new(.:format)      posts#new
+# edit_post GET    /posts/:id/edit(.:format) posts#edit
+#      post GET    /posts/:id(.:format)      posts#show
+#           PATCH  /posts/:id(.:format)      posts#update
+#           PUT    /posts/:id(.:format)      posts#update
+#           DELETE /posts/:id(.:format)      posts#destroy
+```
+
+Remember we ignore the prefix column? It is actually very useful because we can simply refer to posts, we can be **redireted back to '/posts'**
+
+###Step 5
+Lets try it 
+
+<a name="linkingAllEdit"></a>
+##Linking It All Together - Edit
