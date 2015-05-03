@@ -241,9 +241,7 @@ Edit the **index.html.erb** we created for **posts controller**
 <% end %>
 ```
 
-Here you can see something very similar to what we did in Basic of Ruby. the difference is the "<% %>" and "<%= %>".
-
-Basically the code with the = sign will try to print out the variable specified while the code without the = sign will simply run the logic
+Here you can see something very similar to what we did in Basic of Ruby. Basically the code with the = sign will try to print out the variable specified while the code without the = sign will simply run the logic.
 
 ###Step 7
 Start the server if you havn't already, then go to ```localhost:3000/posts```
