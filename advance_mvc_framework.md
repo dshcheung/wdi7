@@ -183,6 +183,7 @@ This is very useful as this will help you create a RESTful api
 
 This will give you is
 ``` ruby
+#    Prefix Verb   URI Pattern               Controller#Action
 #     posts GET    /posts(.:format)          posts#index
 #           POST   /posts(.:format)          posts#create
 #  new_post GET    /posts/new(.:format)      posts#new
@@ -192,82 +193,14 @@ This will give you is
 #           PUT    /posts/:id(.:format)      posts#update
 #           DELETE /posts/:id(.:format)      posts#destroy
 ```
-
-**Quiz**
- - Which command checks the routes?
+Does these look confusing? For now, lets ignore the Prefix column and focus on the rest. Previously when we did ```root "static_pages#index"```, we basically tell the route to redirectect any "http://localhost:3000/" to the **static_pages controller index action**. Now given the type of http request (get, post, put, delete), it will redirect us to the appropirate controller and action.
 
 ###Step 2
 In iTerm, create controller for **posts**
-
-**Quiz**
- - What command generates controller?
+```rails g controller Posts```
 
 ###Step 3
-In the controller we just created, add the **index method**
-
-**Quiz**
- - What does the method syntax looks like?
-
-###Step 4
-Inside the index method, add
-``` ruby
-@posts = Post.all
-```
-
-###Step 5
-Create a file **index.html.erb** for **posts controller**
-
-**Quiz**
- - Where should this file be placed?
-
-###Step 6
-Edit the **index.html.erb** we created for **posts controller**
-``` html
-<h1>List of all Comments</h1>
-
-<% @posts.each do |post| %>
-  <div>
-    <%= post.id %>
-    <%= post.title %>
-    <%= post.content %>
-    <%= post.created_at %>
-  </div>
-<% end %>
-```
-
-###Step 7
-Start the server if you havn't already, then go to ```localhost:3000/posts```
-
-Bravo! You have just used the whole MVC model!!!!
-
-<a name="linkingAllSolutions"></a>
-##Linking It All Together Solutions
-
-###Step 1
-In **routes.rb** add ```resources :posts```
-
-**Quiz**
- - Which command checks the routes?
-
-**Answer**
- - In iTerm type ```rake routes```
-
-###Step 2
-In iTerm, create controller for **posts**
-
-**Quiz**
- - What command generates controller?
-
-**Answer**
- - in Iterm type ```rails g controller Posts```
-
-###Step 3
-In the controller we just created, add the **index method**
-
-**Quiz**
- - What does the method syntax looks like?
-
-**Answer**
+In the controller we just created, add the **index action**
 ``` ruby
 def index
 
@@ -275,19 +208,17 @@ end
 ```
 
 ###Step 4
-Inside the index method, add
+Inside the **index action**, add
 ``` ruby
 @posts = Post.all
 ```
 
+In here we are trying to create a **Global** variable that can be access by the view. Remember, any variable with "@" infront of it can be access by the view. Also we are asking the action to retrieve **all the Post data**.
+
 ###Step 5
-Create a file **index.html.erb** for **posts controller**
+Create a file **index.html.erb** for **posts controller** in ```app > views > posts```
 
-**Quiz**
- - Where should this file be placed?
-
-**Answer**
- - Since this is a **html** belonging to the **Posts Controller**, this should be put in ```app > views > posts > index.html.erb```
+Remember, every action that was redirected from a **HTTP Get** should have a **action.html.erb**
 
 ###Step 6
 Edit the **index.html.erb** we created for **posts controller**
@@ -304,7 +235,9 @@ Edit the **index.html.erb** we created for **posts controller**
 <% end %>
 ```
 
+We will explain the ruby html code later, so for now just copy and paste it.
+
 ###Step 7
-Start the server with ```rails s``` if you havn't already, then go to ```localhost:3000/posts```
+Start the server if you havn't already, then go to ```localhost:3000/posts```
 
 Bravo! You have just used the whole MVC model!!!!
