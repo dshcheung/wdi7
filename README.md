@@ -1,4 +1,5 @@
 #Table of Content
+ * [The Basic of Ruby]()
  * [The Basic MVC Framework](#basicMVC)
   - [Trying It Out](#tryItOut)
  * [Advanced MVC Framework with Database](#advancedMVC)
@@ -9,7 +10,7 @@
   - [Types of Associations for Models](#modelAssociations)
   - [Methods for Using the Database](#databaseMethods)
   - [Linking It All Together](#linkingAll)
-  - [Linking It All Together](#linkingAllSolutions)
+  - [Linking It All Together Solutions](#linkingAllSolutions)
   - [Using AJAX with ROR](#ajaxROR)
   - [Installing Devise](#devise)
   - [Model Validations](#validations)
@@ -183,6 +184,7 @@ var myReddit = {
     }
   ]
 }
+```
 
 Lets say we want all the post that belongs to "denis". We simply use 
 ``` js
@@ -212,7 +214,7 @@ A simple association
 
 ![Table](https://raw.githubusercontent.com/dshcheung/wdi7/master/images/Simple%20Table.png)
 
-Given the simple association decloration, rails will **automatically** add a column **user_id** to the Post Table hence associating them. Meaning that **the post now belongs to user with id x**. This is similar to what the non-relational database example did, but instead of using **author** we now use **user_id**
+Given the simple association decloration, rails will **automatically add a column user_id to the Post Table** hence associating them. Meaning that **the post now belongs to user with id x**. This is similar to what the non-relational database example did, but instead of using **author** we now use **user_id**
 
 Now this is a two-way association meaning whenever you are refering to ```Post.first.user``` or ```User.first.posts```, rails will automatically give you the associated information.
 
@@ -308,7 +310,6 @@ Post.all
 Post.first
 Post.last
 Post.find(1)
-Post.find(2)
 Post.find(3)
 ```
 
@@ -321,7 +322,7 @@ post = Post.find(1).comments.new(:content => "Reddit does not suck")
 post.save
 Post.find(1).comments.create(:content => "You are an idxxt")
 Post.find(1).comments.create(:content => "You are the crazy one")
-Post.find(1).comments.create(:content => "Both of you are crazy")
+Comments.create(:content => "Both of you are crazy", :post_id => 1)
 ```
 
 Notice the difference between **new** vs **create**?
