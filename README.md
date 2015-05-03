@@ -7,17 +7,21 @@
   - [Relational Databases](https://github.com/dshcheung/wdi7/blob/master/relation_vs_non_relational.md#relational)
   - [Conclusion](https://github.com/dshcheung/wdi7/blob/master/relation_vs_non_relational.md#conclusion)
  * [Advance MVC Framework with Database](https://github.com/dshcheung/wdi7/blob/master/advance_mvc_framework.md)
-  - [Simple Model Creation](#simpleModel)
+  - [Simple Model Creation](https://github.com/dshcheung/wdi7/blob/master/advance_mvc_framework.md#simpleModel)
+  - [Using Databases](https://github.com/dshcheung/wdi7/blob/master/advance_mvc_framework.md#usingDatabases)
+  - [Linking It All Together](https://github.com/dshcheung/wdi7/blob/master/advance_mvc_framework.md#linkingAll)
+  - [Linking It All Together Solutions](https://github.com/dshcheung/wdi7/blob/master/advance_mvc_framework.md#linkingAllSolutions)
+ * [Additional Information](https://github.com/dshcheung/wdi7/blob/master/additional_information.md)
+  - [Data Types for Migration](https://github.com/dshcheung/wdi7/blob/master/additional_information.md#migrationTypes)
+  - [Types of Associations for Models](https://github.com/dshcheung/wdi7/blob/master/additional_information.md#modelAssociations)
+  - [Methods for Using the Database](https://github.com/dshcheung/wdi7/blob/master/additional_information.md#databaseMethods)
+
+
+
 
 
 
   
-  - [Using Databases](#usingDatabases)
-  - [Data Types for Migration](#migrationTypes)
-  - [Types of Associations for Models](#modelAssociations)
-  - [Methods for Using the Database](#databaseMethods)
-  - [Linking It All Together](#linkingAll)
-  - [Linking It All Together Solutions](#linkingAllSolutions)
   - [Using AJAX with ROR](#ajaxROR)
   - [Installing Devise](#devise)
   - [Model Validations](#validations)

@@ -38,7 +38,7 @@ When creating associations you have to always keep in mind the type of associati
 We call this a **one-to-many** association. There are more associations which we will learn later.
 
 ###Creating Model and Associations
-We will now create a simple models(defines the association) and migration(defines the columns of table) files.
+We will now create a simple models(**defines the association**) and migration(**defines the columns of table**) files.
 
 Using our previous example of Post and Comments, we can express this in a basic excel format.
 
@@ -106,13 +106,13 @@ There! You have just successfully created two tables and associated them. Howeve
 
 <a name="usingDatabases"></a>
 ##Using Databases
-Before trying to use the controller to add entry to database, lets use the irb and learn now to **input** and **retrieve** data.
+Before trying to use the controller to add entry to database, lets use the irb and learn how to **input** and **retrieve** data.
 
 ###Step 1
 In iTerm, type ```rails c```
 
 ###Step 2
-Try these few commands in sequence one by one and pay attention to the results like the format. Is it an array? is it a hash? or something else?
+Try these commands in sequence one by one and pay attention to the results like the format. Is it an array? is it a hash? or something else?
 
 Note that you always use Capital when refering to a table
 ``` ruby
@@ -131,7 +131,7 @@ Post.find(3)
 Notice the difference between **new** vs **create**?
 **New** will make a new entry but **DOES NOT SAVE** to the database, while **create** will make a new entry and **SAVE** at the same time.
 
-Both is fine but generally speaking, **new** is easier to customize when creating an API
+Both is fine but generally speaking, **new** is easier to use when creating an API
 
 ###Step 3
 Lets create something on the Comment table!
@@ -165,3 +165,146 @@ Comment.find(2).post
 Post.all
 Comment.all
 ```
+
+The things we did are very basic but very powerful. We will now proceed to using these skills in an actual **controller** to show information in the **view*
+
+<a name="linkingAll"></a>
+##Linking It All Together
+Lets try to get data in controller show it in view.
+
+###Step 1
+Everything starts with the route, we will now create an index page for posts.
+
+Recall the advanced MVC framwork? This is where we are putting it to use.
+
+In **routes.rb** add ```resources :posts```
+
+This is very useful as this will help you create a RESTful api
+
+This will give you is
+``` ruby
+#     posts GET    /posts(.:format)          posts#index
+#           POST   /posts(.:format)          posts#create
+#  new_post GET    /posts/new(.:format)      posts#new
+# edit_post GET    /posts/:id/edit(.:format) posts#edit
+#      post GET    /posts/:id(.:format)      posts#show
+#           PATCH  /posts/:id(.:format)      posts#update
+#           PUT    /posts/:id(.:format)      posts#update
+#           DELETE /posts/:id(.:format)      posts#destroy
+```
+
+**Quiz**
+ - Which command checks the routes?
+
+###Step 2
+In iTerm, create controller for **posts**
+
+**Quiz**
+ - What command generates controller?
+
+###Step 3
+In the controller we just created, add the **index method**
+
+**Quiz**
+ - What does the method syntax looks like?
+
+###Step 4
+Inside the index method, add
+``` ruby
+@posts = Post.all
+```
+
+###Step 5
+Create a file **index.html.erb** for **posts controller**
+
+**Quiz**
+ - Where should this file be placed?
+
+###Step 6
+Edit the **index.html.erb** we created for **posts controller**
+``` html
+<h1>List of all Comments</h1>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= post.id %>
+    <%= post.title %>
+    <%= post.content %>
+    <%= post.created_at %>
+  </div>
+<% end %>
+```
+
+###Step 7
+Start the server if you havn't already, then go to ```localhost:3000/posts```
+
+Bravo! You have just used the whole MVC model!!!!
+
+<a name="linkingAllSolutions"></a>
+##Linking It All Together Solutions
+
+###Step 1
+In **routes.rb** add ```resources :posts```
+
+**Quiz**
+ - Which command checks the routes?
+
+**Answer**
+ - In iTerm type ```rake routes```
+
+###Step 2
+In iTerm, create controller for **posts**
+
+**Quiz**
+ - What command generates controller?
+
+**Answer**
+ - in Iterm type ```rails g controller Posts```
+
+###Step 3
+In the controller we just created, add the **index method**
+
+**Quiz**
+ - What does the method syntax looks like?
+
+**Answer**
+``` ruby
+def index
+
+end
+```
+
+###Step 4
+Inside the index method, add
+``` ruby
+@posts = Post.all
+```
+
+###Step 5
+Create a file **index.html.erb** for **posts controller**
+
+**Quiz**
+ - Where should this file be placed?
+
+**Answer**
+ - Since this is a **html** belonging to the **Posts Controller**, this should be put in ```app > views > posts > index.html.erb```
+
+###Step 6
+Edit the **index.html.erb** we created for **posts controller**
+``` html
+<h1>List of all Comments</h1>
+
+<% @posts.each do |post| %>
+  <div>
+    <%= post.id %>
+    <%= post.title %>
+    <%= post.content %>
+    <%= post.created_at %>
+  </div>
+<% end %>
+```
+
+###Step 7
+Start the server with ```rails s``` if you havn't already, then go to ```localhost:3000/posts```
+
+Bravo! You have just used the whole MVC model!!!!
