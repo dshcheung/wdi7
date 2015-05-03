@@ -10,11 +10,11 @@ The Components:
  3. **Controller** - Processes the user request
  4. **View** - Create content for user to see
 
-How it works:
- 1. **User** enters "www.something.com/" in the browser
- 2. **Routes** check the link and redirect to the appropriate controller. (similar to post office)
- 3. **Controller** will ask the view to generate the HTML page
- 4. **View** will send the HTML page to browser, and the browser will display the HTML
+How it works (think post office):
+ 1. **User** enters "www.something.com/" in the browser. (Send a mail through post office)
+ 2. **Routes** check the link and redirect to the appropriate controller. (Look at the address, and give the mail to the appropriate mail man)
+ 3. **Controller** will ask the view to generate the HTML page. (Drive and deliver to your home)
+ 4. **View** will send the HTML page to browser, and the browser will display the HTML. (Recieve and read the mail)
 
 <a name="tryItOut"></a>
 ##Trying It Out
@@ -86,4 +86,4 @@ WOW! You just created your first page in ROR!
 
 You might be thinking... Why go through all this trouble to do something I can already do with a simple setup?
 
-Well... you will find the answer below.
+Well... you will find the answer later on.
